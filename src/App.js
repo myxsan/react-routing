@@ -2,8 +2,14 @@ import "./App.css";
 import Home from "./components/Home";
 import About from "./components/About";
 import Users from "./components/Users";
+import Error404 from "./components/Error404";
 
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  NavLink,
+} from "react-router-dom";
 
 function App() {
   return (
@@ -12,13 +18,29 @@ function App() {
         <nav>
           <ul>
             <li>
-              <Link to="/">Home</Link>
+              <NavLink
+                activeStyle={{ backgroundColor: "black", color: "#fff" }}
+                to="/"
+                exact
+              >
+                Home
+              </NavLink>
             </li>
             <li>
-              <Link to="/about">About</Link>
+              <NavLink
+                activeStyle={{ backgroundColor: "black", color: "#fff" }}
+                to="/about"
+              >
+                About
+              </NavLink>
             </li>
             <li>
-              <Link to="/users">Users</Link>
+              <NavLink
+                activeStyle={{ backgroundColor: "black", color: "#fff" }}
+                to="/users"
+              >
+                Users
+              </NavLink>
             </li>
           </ul>
         </nav>
@@ -29,12 +51,12 @@ function App() {
           <Route path="/" exact component={Home} />
           <Route path="/about" component={About} />
           <Route path="/users" component={Users} />
+          <Route path="*" component={Error404} />
           {/* <Route path="/user/:id" component={User} /> */}
         </Switch>
       </div>
     </Router>
   );
-
 }
 
 export default App;
